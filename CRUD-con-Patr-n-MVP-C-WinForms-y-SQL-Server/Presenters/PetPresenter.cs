@@ -57,23 +57,79 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
 
         private void CancelAction(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanViewFields();
         }
         private void SavePet(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var model = new PetModel();
+            model.Id = Convert.ToInt32(view.PetId);
+            model.Name = view.PetName;
+            model.Type = view.PetType;
+            model.Colours = view.PetColour;
+            try
+            {
+                new Common.ModelDataValidation().Validate(model);
+                if (view.IsEdit == true)
+                {
+                    repository.Edit(model);
+                    view.Message = "Mascota editada correctamente";
+                }
+                else
+                {
+                    repository.Add(model);
+                    view.Message = "Mascota agregada correctamente";
+                }
+                view.IsSuccessful = true;
+                LoadAllPetList();
+                CleanViewFields();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = ex.Message;
+            }
         }
+
+        private void CleanViewFields()
+        {
+            view.PetId = "0";
+            view.PetName = "";
+            view.PetType = "";
+            view.PetColour = "";
+        }
+
         private void DeleteSelectedPet(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var pet = (PetModel)petsBindingSource.Current;
+                repository.Delete(pet.Id);
+                view.IsSuccessful = true;
+                view.Message = "Mascota eliminada correctamente";
+                LoadAllPetList();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = "Un error ocurrio, la mascota no pudo elimnar la mascota \n" + ex.Message;
+            }
         }
+
         private void LoadSelectedPetToEdit(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var pet = (PetModel)petsBindingSource.Current;
+            view.PetId = pet.Id.ToString();
+            view.PetName = pet.Name;
+            view.PetType = pet.Type;
+            view.PetColour = pet.Colours;
+            view.IsEdit = true;
         }
         private void AddNewPet(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            view.IsEdit = false;
+            
+
+            
         }
     }
 }

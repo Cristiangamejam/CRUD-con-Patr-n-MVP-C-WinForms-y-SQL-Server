@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Models\IPetRepository.cs" />
     <Compile Include="Models\PetModel.cs" />
+    <Compile Include="Presenters\Common\ModelDataValidation.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\PetPresenter.cs" />
     <Compile Include="Program.cs" />

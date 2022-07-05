@@ -28,13 +28,61 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views
 
         private void AssociateAndRaiseViewEvents()
         {
+            //Search
             btnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
             txtSearch.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
                     SearchEvent?.Invoke(this, EventArgs.Empty);
             };
-            //Others
+            //Add new
+            btnAddNew.Click += delegate {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+                tabControl1.TabPages.Remove(tabPagePetList);
+                tabControl1.TabPages.Add(tabPagePetDetail);
+                tabPagePetDetail.Text = "Agregar nueva mascota";
+            };
+            //Edit 
+            btnEdit.Click += delegate 
+            {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+                tabControl1.TabPages.Remove(tabPagePetList);
+                tabControl1.TabPages.Add(tabPagePetDetail);
+                tabPagePetDetail.Text = "Editar mascota";
+            };
+            //Save
+            btnSave.Click += delegate
+            {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+                if (IsSuccessful)
+                {
+                    tabControl1.TabPages.Remove(tabPagePetDetail);
+                    tabControl1.TabPages.Add(tabPagePetList);
+                }
+
+                MessageBox.Show(Message);
+            };
+            //Cancel
+            btnCancel.Click += delegate 
+            {
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+                tabControl1.TabPages.Remove(tabPagePetDetail );
+                tabControl1.TabPages.Add(tabPagePetList);
+            };
+            //Delete
+            btnDelete.Click += delegate 
+            {
+                
+                var result= MessageBox.Show("Esta seguro que quiere eliminar la mascota seleccioda?", "Advertencia",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(message);
+                }
+            };
+            
+
         }
 
         //Properties
