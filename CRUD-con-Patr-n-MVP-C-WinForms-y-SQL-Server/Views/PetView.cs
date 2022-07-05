@@ -125,16 +125,7 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views
         public bool IsSuccessful
         {
             get => isSuccessful;
-            //set => isSuccessful=value;
-            set { if (value == false)
-                {
-                    isSuccessful = true;
-                }
-                else
-                {
-                    isSuccessful = false;
-                }
-            }
+            set => isSuccessful=value;
         }
 
         public string Message
