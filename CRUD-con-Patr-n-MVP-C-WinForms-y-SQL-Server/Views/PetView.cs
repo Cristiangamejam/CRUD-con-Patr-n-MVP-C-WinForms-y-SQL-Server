@@ -23,6 +23,7 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views
             InitializeComponent();
             AssociateAndRaiseViewEvents();
             tabControl1.TabPages.Remove(tabPagePetDetail);
+            btnClose.Click += delegate { this.Close(); };
         }
 
         private void AssociateAndRaiseViewEvents()
@@ -111,6 +112,26 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views
         private void PetView_Load(object sender, EventArgs e)
         {
 
+        }
+
+        //Singleton Pattern(open a single form instance)
+        private static PetView instance;
+        public static PetView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new PetView();
+                instance.MdiParent = parentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+                instance.BringToFront();
+            }
+            return instance;
         }
     }
 }

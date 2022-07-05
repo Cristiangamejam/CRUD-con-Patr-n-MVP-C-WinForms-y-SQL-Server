@@ -22,10 +22,12 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             string ConnectionString= ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
-            IPetView view = new PetView();
-            IPetRepository repository = new PetRepository(ConnectionString);
-            new PetPresenter(view, repository);
+            //IPetView view = new PetView();
+            //IPetRepository repository = new PetRepository(ConnectionString);
+            //new PetPresenter(view, repository);
 
+            IMainView view = new MainView();
+            new MainPresenter(view, ConnectionString);
             Application.Run((Form)view);
         }
     }
