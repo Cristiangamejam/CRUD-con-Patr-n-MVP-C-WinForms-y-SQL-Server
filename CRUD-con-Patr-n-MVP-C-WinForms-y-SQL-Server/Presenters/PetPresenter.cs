@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server._Repositories;
 using CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Models;
 using CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views;
 
@@ -16,6 +17,7 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
         private IPetRepository repository;
         private BindingSource petsBindingSource;
         private IEnumerable<PetModel> petList;
+        
 
         //Constructor
         public PetPresenter(IPetView view, IPetRepository repository)
@@ -23,7 +25,7 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
             this.petsBindingSource = new BindingSource();
             this.view = view;
             this.repository = repository;
-
+            
             //Subscribe event handler methods to view events
             this.view.SearchEvent += SearchPet;
             this.view.AddNewEvent += AddNewPet;
@@ -31,6 +33,8 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
             this.view.DeleteEvent += DeleteSelectedPet;
             this.view.SaveEvent += SavePet;
             this.view.CancelEvent += CancelAction;
+            this.view.Pet+= Pet;
+           // this.view.ShowVetsView += ShowVetsView;
             //Set pets bindind source
             this.view.SetPetListBindingSource(petsBindingSource);
             //Load pet list view
@@ -38,6 +42,18 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
             //Show view
             this.view.Show();
         }
+
+        private void Pet(object sender, EventArgs e)
+        {
+            // IPantalla view = FrmPantalla.GetInstance((PetView)this.view.Form);// new PetView();
+            IPantalla view = FrmPantalla.GetInstance((PetView)this.view);// new PetView();
+          //  IPantallaRepository pantalla = new PantallaModel(sqlConnectionString);
+            new PantallaPresenter(view);
+        }
+
+        
+    
+
 
         //Methods
         private void LoadAllPetList()
@@ -127,9 +143,7 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
         private void AddNewPet(object sender, EventArgs e)
         {
             view.IsEdit = false;
-            
 
-            
         }
     }
 }

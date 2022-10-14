@@ -7,9 +7,11 @@ using System.Windows.Forms;
 
 namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views
 {
-    public interface IMainView
+    public interface IPantalla
     {
-        event EventHandler ShowPetView;
-        event EventHandler ShowPantallaView;
+        //event EventHandler Pet;
+        void Show();
+
+        //Form Form { get; }
     }
 }

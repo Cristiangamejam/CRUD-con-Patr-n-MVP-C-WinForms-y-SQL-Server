@@ -18,7 +18,15 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
         {
             this.mainView = mainView;
             this.sqlConnectionString = sqlConnectionString;
+            
             this.mainView.ShowPetView += ShowPetView;
+            this.mainView.ShowPantallaView+=ShowPantallaView;
+    }
+
+        private void ShowPantallaView(object sender, EventArgs e)
+        {
+            IPantalla pantalla = FrmPantalla.GetInstance((MainView)mainView);
+            new PantallaPresenter(pantalla);   
         }
 
         private void ShowPetView(object sender, EventArgs e)

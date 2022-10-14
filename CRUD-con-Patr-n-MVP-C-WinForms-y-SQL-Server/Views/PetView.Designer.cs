@@ -51,6 +51,7 @@
             this.txtPetName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPetId = new System.Windows.Forms.TextBox();
+            this.BtnShowVetsView = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPagePetList.SuspendLayout();
@@ -103,6 +104,7 @@
             // 
             // tabPagePetList
             // 
+            this.tabPagePetList.Controls.Add(this.BtnShowVetsView);
             this.tabPagePetList.Controls.Add(this.dataGridView);
             this.tabPagePetList.Controls.Add(this.label2);
             this.tabPagePetList.Controls.Add(this.btnDelete);
@@ -300,6 +302,16 @@
             this.txtPetId.Size = new System.Drawing.Size(154, 29);
             this.txtPetId.TabIndex = 6;
             // 
+            // BtnShowVetsView
+            // 
+            this.BtnShowVetsView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnShowVetsView.Location = new System.Drawing.Point(676, 234);
+            this.BtnShowVetsView.Name = "BtnShowVetsView";
+            this.BtnShowVetsView.Size = new System.Drawing.Size(99, 30);
+            this.BtnShowVetsView.TabIndex = 10;
+            this.BtnShowVetsView.Text = "ShowVetsView";
+            this.BtnShowVetsView.UseVisualStyleBackColor = true;
+            // 
             // PetView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,5 +359,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPetId;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button BtnShowVetsView;
     }
 }

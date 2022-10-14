@@ -16,10 +16,10 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views
         {
             InitializeComponent();
             BtnPets.Click += delegate { ShowPetView?.Invoke(this, EventArgs.Empty); };
+            BtnPantalla.Click += delegate { ShowPantallaView?.Invoke(this, EventArgs.Empty); };
         }
 
         public event EventHandler ShowPetView;
-        public event EventHandler ShowOwnerView;
-        public event EventHandler ShowVetsView;
+        public event EventHandler ShowPantallaView;
     }
 }

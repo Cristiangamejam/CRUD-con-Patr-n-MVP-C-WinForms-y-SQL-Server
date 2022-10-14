@@ -30,11 +30,13 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnPets = new System.Windows.Forms.Button();
+            this.BtnPantalla = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BtnPantalla);
             this.panel1.Controls.Add(this.BtnPets);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -45,12 +47,22 @@
             // BtnPets
             // 
             this.BtnPets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPets.Location = new System.Drawing.Point(3, 26);
+            this.BtnPets.Location = new System.Drawing.Point(3, 32);
             this.BtnPets.Name = "BtnPets";
             this.BtnPets.Size = new System.Drawing.Size(194, 31);
             this.BtnPets.TabIndex = 0;
             this.BtnPets.Text = "Pets";
             this.BtnPets.UseVisualStyleBackColor = true;
+            // 
+            // BtnPantalla
+            // 
+            this.BtnPantalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPantalla.Location = new System.Drawing.Point(6, 80);
+            this.BtnPantalla.Name = "BtnPantalla";
+            this.BtnPantalla.Size = new System.Drawing.Size(194, 31);
+            this.BtnPantalla.TabIndex = 1;
+            this.BtnPantalla.Text = "Pantalla";
+            this.BtnPantalla.UseVisualStyleBackColor = true;
             // 
             // MainView
             // 
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BtnPets;
+        private System.Windows.Forms.Button BtnPantalla;
     }
 }

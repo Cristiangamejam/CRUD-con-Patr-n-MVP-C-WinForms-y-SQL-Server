@@ -27,9 +27,12 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views
         event EventHandler DeleteEvent;
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
+        event EventHandler Pet;
 
         //Methods
         void SetPetListBindingSource(BindingSource petList);
         void Show();
+        //Form Form { get;  }
+
     }
 }
