@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,14 +19,15 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
         private BindingSource petsBindingSource;
         private IEnumerable<PetModel> petList;
         
-
+        string ConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
+        
         //Constructor
         public PetPresenter(IPetView view, IPetRepository repository)
         {
             this.petsBindingSource = new BindingSource();
             this.view = view;
             this.repository = repository;
-            
+           
             //Subscribe event handler methods to view events
             this.view.SearchEvent += SearchPet;
             this.view.AddNewEvent += AddNewPet;
@@ -33,8 +35,8 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
             this.view.DeleteEvent += DeleteSelectedPet;
             this.view.SaveEvent += SavePet;
             this.view.CancelEvent += CancelAction;
-            this.view.Pet+= Pet;
-           // this.view.ShowVetsView += ShowVetsView;
+            this.view.ShowVetsView += ShowVetsView;
+            this.view.ShowPantallaView += ShowPantallaView;
             //Set pets bindind source
             this.view.SetPetListBindingSource(petsBindingSource);
             //Load pet list view
@@ -43,17 +45,18 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
             this.view.Show();
         }
 
-        private void Pet(object sender, EventArgs e)
+        private void ShowPantallaView(object sender, EventArgs e)
         {
-            // IPantalla view = FrmPantalla.GetInstance((PetView)this.view.Form);// new PetView();
             IPantalla view = FrmPantalla.GetInstance((PetView)this.view);// new PetView();
-          //  IPantallaRepository pantalla = new PantallaModel(sqlConnectionString);
-            new PantallaPresenter(view);
+            IPantallaRepository pantalla = new PantallaRepository(ConnectionString);
+            new PantallaPresenter(view, pantalla);
         }
 
-        
-    
-
+        private void ShowVetsView(object sender, EventArgs e)
+        {
+            // IPantalla view = FrmPantalla.GetInstance((PetView)this.view.Form);// new PetView();
+           
+        }
 
         //Methods
         private void LoadAllPetList()

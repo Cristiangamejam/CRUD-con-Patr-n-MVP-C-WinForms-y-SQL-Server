@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\IPantallaRepository.cs" />
     <Compile Include="Models\IPetRepository.cs" />
     <Compile Include="Models\PetModel.cs" />
     <Compile Include="Presenters\Common\ModelDataValidation.cs" />
@@ -78,6 +79,7 @@
       <DependentUpon>PetView.cs</DependentUpon>
     </Compile>
     <Compile Include="_Repositories\BaseRepository.cs" />
+    <Compile Include="_Repositories\PantallaRepository.cs" />
     <Compile Include="_Repositories\PetRepository.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

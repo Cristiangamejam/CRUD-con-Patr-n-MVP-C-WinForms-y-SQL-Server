@@ -26,7 +26,9 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
         private void ShowPantallaView(object sender, EventArgs e)
         {
             IPantalla pantalla = FrmPantalla.GetInstance((MainView)mainView);
-            new PantallaPresenter(pantalla);   
+            IPantallaRepository pantallaRepository = new PantallaRepository(sqlConnectionString);
+            new PantallaPresenter(pantalla, pantallaRepository);
+            
         }
 
         private void ShowPetView(object sender, EventArgs e)
@@ -34,6 +36,11 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
             IPetView view = PetView.GetInstance((MainView)mainView);// new PetView();
             IPetRepository repository = new PetRepository(sqlConnectionString);
             new PetPresenter(view, repository);
+
+            //PetView petView = new PetView();
+            //petView.geti
+            //petView.MdiParent = (MainView)mainView;
+            //petView.Show();
         }
     }
 }

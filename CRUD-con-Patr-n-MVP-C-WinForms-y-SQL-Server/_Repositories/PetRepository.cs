@@ -25,7 +25,8 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server._Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "insert into Pet values (@name,@type,@colour)";
+                command.CommandText = "insert into Pet (Pet_name,Pet_type,Pet_colour) values (@name,@type,@colour)";
+                //command.Parameters.Add("@id", SqlDbType.Int).Value = petModel.Id;
                 command.Parameters.Add("@name", SqlDbType.NVarChar).Value = petModel.Name;
                 command.Parameters.Add("@type", SqlDbType.NVarChar).Value = petModel.Type;
                 command.Parameters.Add("@colour", SqlDbType.NVarChar).Value = petModel.Colours;

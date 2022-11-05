@@ -83,7 +83,7 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views
             };
 
             BtnShowVetsView.Click += delegate {
-                Pet?.Invoke(this, EventArgs.Empty);
+                ShowPantallaView?.Invoke(this, EventArgs.Empty);
             };
         }
 
@@ -136,11 +136,6 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views
             set => message=value;
         }
 
-        //public Form Form {
-        //    get => instance;
-        //    //set => instance=value;
-        //}
-
         //Events
         public event EventHandler SearchEvent;
         public event EventHandler AddNewEvent;
@@ -149,11 +144,9 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views
         public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
         public event EventHandler ShowPetView2;
-        public event EventHandler Pet;
-
-        // public event EventHandler ShowPetView;
-        //public event EventHandler ShowOwnerView;
-        //public event EventHandler ShowVetsView;
+        public event EventHandler ShowVetsView;
+        public event EventHandler ShowPetView;
+        public event EventHandler ShowPantallaView;
 
         //Methols
         public void SetPetListBindingSource(BindingSource petList)

@@ -12,18 +12,13 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Presenters
     public class PantallaPresenter
     {
         private IPantalla pantalla;
-        public PantallaPresenter(IPantalla _pantalla)
+        private IPantallaRepository pantallaModel;
+        public PantallaPresenter(IPantalla _pantalla,IPantallaRepository pantallaModel)
         {
-                pantalla=_pantalla;
-            ///this.pantalla.Pet += Pet;
+            pantalla=_pantalla;
+            this.pantallaModel = pantallaModel;
             pantalla.Show();
             
         }
-        //private void Pet(object sender, EventArgs e)
-        //{
-        //    IPantalla view = FrmPantalla.GetInstance((FrmPantalla)pantalla);// new PetView();
-        //    //IPetRepository repository = new PetRepository(sqlConnectionString);
-        //    new PantallaPresenter(view);
-        //}
     }
 }

@@ -12,17 +12,10 @@ namespace CRUD_con_Patr_n_MVP_C_WinForms_y_SQL_Server.Views
 {
     public partial class FrmPantalla : Form,IPantalla
     {
-        //public Form Form
-        //{
-        //    get => instance;
-        //    //set => instance=value;
-        //}
 
         public FrmPantalla()
         {
             InitializeComponent();
-            //BtnPet.Click += delegate {
-            //    ShowPetView?.Invoke(this, EventArgs.Empty);
         }
 
         //Singleton Pattern(open a single form instance)
